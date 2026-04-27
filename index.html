@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,6 @@
         header { background: white; padding: 15px; text-align: center; box-shadow: 0 2px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
         .logo { font-size: 22px; font-weight: bold; color: var(--primary); }
         .hero { padding: 60px 20px; text-align: center; background: linear-gradient(135deg, #2d5a27 0%, #1a3c1a 100%); color: white; border-bottom: 8px solid var(--accent); }
-        .hero h1 { font-size: 28px; line-height: 1.4; margin-bottom: 15px; }
         .cta-btn { background: var(--accent); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; box-shadow: 0 4px 15px rgba(0,0,0,0.2); margin-top: 10px; }
 
         /* معرض الصور المضمون 100% */
@@ -21,13 +20,6 @@
         .preview-card:hover { transform: translateY(-10px); border-color: var(--accent); }
         .preview-card img { width: 100%; height: 220px; object-fit: cover; background: #fafafa; display: block; }
         .card-label { padding: 15px; font-weight: bold; color: var(--primary); background: #fff; }
-
-        /* نموذج الطلب */
-        .order-section { padding: 60px 20px; background: white; }
-        .form-box { max-width: 500px; margin: auto; padding: 30px; border-radius: 25px; background: #f9f9f9; border: 1px solid #eee; }
-        .form-box input, .form-box textarea { width: 100%; padding: 15px; margin-bottom: 15px; border-radius: 12px; border: 1px solid #ddd; font-family: 'Cairo'; box-sizing: border-box; font-size: 16px; }
-        .send-btn { background: var(--primary); color: white; width: 100%; padding: 18px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 18px; transition: 0.3s; }
-        .send-btn:hover { background: #1a3c1a; }
 
         /* نافذة العرض (Lightbox) */
         .lightbox { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; }
@@ -72,15 +64,13 @@
     </div>
 </section>
 
-<section class="order-section" id="order">
-    <div class="form-box">
-        <h2 style="text-align: center; color: var(--primary);">اطلب نسختك التجريبية</h2>
+<section id="order" style="padding: 60px 20px; background: white; text-align: center;">
+    <h2 style="color: var(--primary);">اطلب نسختك التجريبية</h2>
+    <div style="max-width: 500px; margin: auto; padding: 30px; background: #f9f9f9; border-radius: 25px; border: 1px solid #eee;">
         <form action="https://formspree.io" method="POST">
-            <input type="text" name="name" placeholder="اسم الطبيب" required>
-            <input type="text" name="specialty" placeholder="التخصص الطبي" required>
-            <input type="tel" name="phone" placeholder="رقم الواتساب" required>
-            <textarea name="message" rows="3" placeholder="استفسارات إضافية"></textarea>
-            <button type="submit" class="send-btn">إرسال الطلب للمنظومة 🚀</button>
+            <input type="text" name="name" placeholder="اسم الطبيب" style="width:100%; padding:15px; margin-bottom:15px; border-radius:12px; border:1px solid #ddd;" required>
+            <input type="tel" name="phone" placeholder="رقم الواتساب" style="width:100%; padding:15px; margin-bottom:15px; border-radius:12px; border:1px solid #ddd;" required>
+            <button type="submit" style="background:var(--primary); color:white; width:100%; padding:18px; border:none; border-radius:12px; font-weight:bold; cursor:pointer;">إرسال الطلب للمنظومة 🚀</button>
         </form>
     </div>
 </section>
@@ -94,8 +84,7 @@
     <a href="https://wa.me" class="wa-link">تواصل عبر واتساب 💬</a>
     <div class="credits">
         <strong>BY Alextech© M.Sherif A. Elradi</strong><br>
-        أخصائي الطب الوظيفي والأعشاب | باحث في النباتات الطبية<br>
-        مؤسس منظومة Alextech التقنية
+        أخصائي الطب الوظيفي والأعشاب | مؤسس منظومة Alextech التقنية
     </div>
 </footer>
 
