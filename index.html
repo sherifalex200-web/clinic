@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منظومة AlexTech لإدارة العيادات</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root { --primary: #2d5a27; --accent: #25d366; --bg: #f4f9f4; }
+        body { font-family: 'Cairo', sans-serif; margin: 0; padding: 0; color: #333; background-color: var(--bg); scroll-behavior: smooth; }
+        header { background: white; padding: 15px; text-align: center; box-shadow: 0 2px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 22px; font-weight: bold; color: var(--primary); }
+        .hero { padding: 60px 20px; text-align: center; background: linear-gradient(135deg, #2d5a27 0%, #1a3c1a 100%); color: white; border-bottom: 8px solid var(--accent); }
+        .hero h1 { font-size: 28px; line-height: 1.4; margin-bottom: 15px; }
+        .cta-btn { background: var(--accent); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; box-shadow: 0 4px 15px rgba(0,0,0,0.2); margin-top: 10px; }
+
+        /* معرض الصور المضمون 100% */
+        .preview-section { padding: 40px 20px; max-width: 1000px; margin: auto; text-align: center; }
+        .preview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .preview-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.07); cursor: pointer; border: 1px solid #eee; transition: 0.3s; }
+        .preview-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+        .preview-card img { width: 100%; height: 220px; object-fit: cover; background: #fafafa; display: block; }
+        .card-label { padding: 15px; font-weight: bold; color: var(--primary); background: #fff; }
+
+        /* نموذج الطلب */
+        .order-section { padding: 60px 20px; background: white; }
+        .form-box { max-width: 500px; margin: auto; padding: 30px; border-radius: 25px; background: #f9f9f9; border: 1px solid #eee; }
+        .form-box input, .form-box textarea { width: 100%; padding: 15px; margin-bottom: 15px; border-radius: 12px; border: 1px solid #ddd; font-family: 'Cairo'; box-sizing: border-box; font-size: 16px; }
+        .send-btn { background: var(--primary); color: white; width: 100%; padding: 18px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 18px; transition: 0.3s; }
+        .send-btn:hover { background: #1a3c1a; }
+
+        /* نافذة العرض (Lightbox) */
+        .lightbox { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; }
+        .lightbox img { max-width: 95%; max-height: 90%; border: 3px solid white; border-radius: 5px; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        .close-btn { position: absolute; top: 20px; right: 30px; color: white; font-size: 50px; cursor: pointer; }
+
+        footer { padding: 40px 20px; text-align: center; background: #1a1a1a; color: white; }
+        .wa-link { color: var(--accent); text-decoration: none; font-weight: bold; font-size: 20px; }
+        .credits { font-size: 13px; color: #888; margin-top: 20px; border-top: 1px solid #333; padding-top: 20px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+
+<header><div class="logo">ALEXTECH CLINIC SOLUTIONS</div></header>
+
+<section class="hero">
+    <h1>منظومة AlexTech لإدارة العيادات</h1>
+    <p>دقة طبية.. احترافية تقنية.. سهولة في الاستخدام</p>
+    <a href="#order" class="cta-btn">سجل طلبك للحصول على النسخة 🚀</a>
+</section>
+
+<section class="preview-section">
+    <h2>📸 جولة داخل واجهات النظام</h2>
+    <p style="color:#666; font-size:14px; margin-bottom:20px;">(اضغط على الصورة لتكبيرها بوضوح تام)</p>
+    <div class="preview-grid">
+        <div class="preview-card" onclick="showImg('1.png')">
+            <img src="1.png" alt="واجهة الدخول">
+            <div class="card-label">شاشة الدخول الآمنة</div>
+        </div>
+        <div class="preview-card" onclick="showImg('2.png')">
+            <img src="2.png" alt="سجل المرضى">
+            <div class="card-label">إدارة سجلات المرضى</div>
+        </div>
+        <div class="preview-card" onclick="showImg('3.png')">
+            <img src="3.png" alt="الروشتة">
+            <div class="card-label">التاريخ الطبي والروشتات</div>
+        </div>
+        <div class="preview-card" onclick="showImg('4.png')">
+            <img src="4.png" alt="الإعدادات">
+            <div class="card-label">إعدادات المنظومة الذكية</div>
+        </div>
+    </div>
+</section>
+
+<section class="order-section" id="order">
+    <div class="form-box">
+        <h2 style="text-align: center; color: var(--primary);">اطلب نسختك التجريبية</h2>
+        <form action="https://formspree.io" method="POST">
+            <input type="text" name="name" placeholder="اسم الطبيب" required>
+            <input type="text" name="specialty" placeholder="التخصص الطبي" required>
+            <input type="tel" name="phone" placeholder="رقم الواتساب" required>
+            <textarea name="message" rows="3" placeholder="استفسارات إضافية"></textarea>
+            <button type="submit" class="send-btn">إرسال الطلب للمنظومة 🚀</button>
+        </form>
+    </div>
+</section>
+
+<div id="lightbox" class="lightbox" onclick="this.style.display='none'">
+    <span class="close-btn">&times;</span>
+    <img id="fullImg" src="">
+</div>
+
+<footer>
+    <a href="https://wa.me" class="wa-link">تواصل عبر واتساب 💬</a>
+    <div class="credits">
+        <strong>BY Alextech© M.Sherif A. Elradi</strong><br>
+        أخصائي الطب الوظيفي والأعشاب | باحث في النباتات الطبية<br>
+        مؤسس منظومة Alextech التقنية
+    </div>
+</footer>
+
+<script>
+    function showImg(src) {
+        const lightbox = document.getElementById('lightbox');
+        const fullImg = document.getElementById('fullImg');
+        fullImg.src = src;
+        lightbox.style.display = 'flex';
+    }
+</script>
+
+</body>
+</html>
